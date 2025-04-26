@@ -190,6 +190,39 @@
       }
     }
 
+    /* تأثيرات عند اقتراب العد التنازلي */
+    .warning {
+      color: #ff3838;
+      animation: flashRed 0.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes flashRed {
+      0% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0.5;
+      }
+    }
+
+    /* تحريك العداد مع التفاعل */
+    .time-unit:hover {
+      transform: scale(1.2);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .countdown-container:hover {
+      box-shadow: 0 0 50px rgba(255, 255, 255, 0.5);
+      transition: all 0.3s ease-in-out;
+    }
+
+    /* تأثيرات صغيرة على النص */
+    .countdown-text:hover {
+      text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.8);
+      transition: all 0.3s ease-in-out;
+    }
+
+    /* تحسينات للأجهزة الصغيرة */
     @media (max-width: 768px) {
       #countdown {
         flex-direction: column;
@@ -202,6 +235,34 @@
 
       h1.title {
         font-size: 35px;
+      }
+
+      .countdown-container {
+        padding: 30px 15px;
+      }
+
+      .millisecond {
+        font-size: 30px;
+      }
+    }
+
+    /* تصميم مميز للأجهزة الكبيرة */
+    @media (min-width: 1200px) {
+      .countdown-container {
+        max-width: 1200px;
+        padding: 80px 40px;
+      }
+
+      h1.title {
+        font-size: 60px;
+      }
+
+      #countdown {
+        font-size: 40px;
+      }
+
+      .time-unit span {
+        font-size: 80px;
       }
     }
 
@@ -263,6 +324,7 @@
       if (remainingTime < 10000) {
         document.getElementById("countdown").style.color = '#ff3838';
         document.getElementById("milliseconds").style.fontSize = '45px';
+        document.getElementById("countdown").classList.add('warning');
       }
     }
 
