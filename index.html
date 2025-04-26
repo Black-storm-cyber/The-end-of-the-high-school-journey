@@ -1,178 +1,273 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الوقت الذي قضيته في الثانوية العامة</title>
-    <style>
-        /* إعدادات عامّة للموقع */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            color: #fff;
-            background-image: url('https://via.placeholder.com/1500x1000'); /* صورة خلفية */
-            background-size: cover;
-            background-position: center;
-            animation: backgroundAnim 10s infinite alternate;
-            text-align: center;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>العد التنازلي للثانوية العامة</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        /* الحاوية الرئيسية */
-        .container {
-            background-color: rgba(0, 0, 0, 0.8);
-            border-radius: 10px;
-            padding: 40px;
-            width: 100%;
-            max-width: 700px;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-            animation: scaleUp 2s ease-in-out;
-        }
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #121212;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      flex-direction: column;
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+      animation: fadeInBody 2s ease-in-out;
+    }
 
-        /* الرسالة */
-        .message {
-            font-size: 2rem;
-            color: #f9c74f;
-            margin-bottom: 30px;
-            animation: fadeIn 2s ease-out;
-        }
+    @keyframes fadeInBody {
+      0% {
+        opacity: 0;
+        transform: translateY(100px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-        /* تأثيرات الأنيميشن */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+    .background {
+      background: url('https://source.unsplash.com/1920x1080/?sky,city,abstract') no-repeat center center fixed;
+      background-size: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      filter: brightness(0.5);
+    }
 
-        @keyframes scaleUp {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
+    .countdown-container {
+      background: rgba(0, 0, 0, 0.7); 
+      padding: 50px 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+      width: 90%;
+      max-width: 900px;
+      border: 2px solid #f39c12;
+      position: relative;
+      animation: slideIn 2s ease-in-out;
+    }
 
-        @keyframes backgroundAnim {
-            0% { background-position: left top; }
-            100% { background-position: right bottom; }
-        }
+    @keyframes slideIn {
+      0% {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
 
-        /* العداد */
-        .countdown {
-            font-size: 2.5rem;
-            font-weight: bold;
-            letter-spacing: 2px;
-            color: #ff6f61;
-            animation: pulse 2s infinite;
-        }
+    h1.title {
+      font-size: 45px;
+      font-weight: bold;
+      margin-bottom: 30px;
+      color: #f39c12;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+      animation: fadeInTitle 2s ease-in-out;
+    }
 
-        /* تأثير نبضات العداد */
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
+    @keyframes fadeInTitle {
+      0% {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-        .time {
-            font-size: 3rem;
-            font-weight: bold;
-            color: #f9c74f;
-            letter-spacing: 2px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
+    #countdown {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 30px;
+      font-weight: bold;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+      margin-top: 30px;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+      animation: fadeInCountdown 1s ease-in-out;
+    }
 
-        .time span {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: rgba(0, 0, 0, 0.6);
-            border-radius: 10px;
-            font-size: 2.5rem;
-            animation: bounce 1.5s infinite ease-in-out;
-        }
+    @keyframes fadeInCountdown {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
 
-        /* تأثير حركة البونس للأرقام */
-        @keyframes bounce {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0); }
-        }
+    .time-unit {
+      text-align: center;
+      transition: transform 0.3s ease;
+      color: #fff;
+      animation: zoomIn 1s ease-in-out;
+    }
 
-        /* تصميم متجاوب */
-        @media (max-width: 768px) {
-            .time {
-                flex-direction: column;
-            }
-        }
+    @keyframes zoomIn {
+      0% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
 
-        .alert {
-            font-size: 1.5rem;
-            color: #ff0a0a;
-            margin-top: 30px;
-            animation: alertAnim 5s ease-in-out;
-        }
+    .time-unit span {
+      font-size: 60px;
+      display: block;
+      margin-bottom: 5px;
+      color: #f39c12;
+    }
 
-        /* تأثير تنبيه عند الاقتراب من الموعد */
-        @keyframes alertAnim {
-            0% { opacity: 0; }
-            50% { opacity: 1; }
-            100% { opacity: 0; }
-        }
+    .time-unit p {
+      font-size: 20px;
+      margin-top: 5px;
+      color: #f39c12;
+    }
 
-    </style>
+    .countdown-text {
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 30px;
+      color: #f39c12;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+      animation: fadeInText 2s ease-in-out;
+    }
+
+    @keyframes fadeInText {
+      0% {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .millisecond {
+      font-size: 35px;
+      font-weight: bold;
+      color: #f39c12;
+      margin-top: 20px;
+      animation: pulse 1s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.2);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @media (max-width: 768px) {
+      #countdown {
+        flex-direction: column;
+        font-size: 24px;
+      }
+
+      .time-unit span {
+        font-size: 40px;
+      }
+
+      h1.title {
+        font-size: 35px;
+      }
+    }
+
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="message">الوقت الذي قضيته في الثانوية العامة</div>
-        <div class="countdown">
-            <div class="time">
-                <span id="days"></span> أيام
-                <span id="hours"></span> ساعات
-                <span id="minutes"></span> دقائق
-                <span id="seconds"></span> ثواني
-            </div>
-        </div>
-        <div class="alert" id="alertMessage"></div>
+  <div class="background"></div>
+  <div class="countdown-container">
+    <h1 class="title">الوقت المتبقي على انتهاء الثانوية العامة</h1>
+    <div id="countdown">
+      <div class="time-unit">
+        <span id="days"></span>
+        <p>أيام</p>
+      </div>
+      <div class="time-unit">
+        <span id="hours"></span>
+        <p>ساعات</p>
+      </div>
+      <div class="time-unit">
+        <span id="minutes"></span>
+        <p>دقائق</p>
+      </div>
+      <div class="time-unit">
+        <span id="seconds"></span>
+        <p>ثواني</p>
+      </div>
     </div>
+    <div class="millisecond" id="milliseconds"></div>
+    <div class="countdown-text" id="countdown-text">الوقت اللي قاعدلنا في ثانوية عامة:</div>
+  </div>
 
-    <script>
-        function updateCountdown() {
-            // تاريخ انتهاء امتحانات الثانوية العامة (10 يوليو 2025 الساعة 12 ظهرًا بتوقيت مصر)
-            const targetDate = new Date('2025-07-10T12:00:00+02:00'); // مصر توقيت GMT+2
+  <script>
+    // تحديد التاريخ المستهدف
+    const targetDate = new Date('2025-07-10T12:00:00+02:00'); // توقيت مصر (التوقيت الصيفي)
 
-            // الحصول على الوقت الحالي
-            const currentDate = new Date();
+    // التحديثات المستمرة للعد التنازلي
+    function updateCountdown() {
+      const now = new Date();
+      const remainingTime = targetDate - now;
 
-            // حساب الفرق بين الوقت الحالي وموعد الامتحانات
-            const timeDifference = targetDate - currentDate;
+      if (remainingTime <= 0) {
+        document.getElementById("countdown").innerHTML = "<h2>تم الوصول إلى الموعد المحدد!</h2>";
+        return;
+      }
 
-            // حساب الأيام، الساعات، الدقائق، والثواني
-            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+      const days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+      const milliseconds = remainingTime % 1000;
 
-            // عرض العد التنازلي
-            document.getElementById("days").innerHTML = days;
-            document.getElementById("hours").innerHTML = hours;
-            document.getElementById("minutes").innerHTML = minutes;
-            document.getElementById("seconds").innerHTML = seconds;
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = hours;
+      document.getElementById("minutes").textContent = minutes;
+      document.getElementById("seconds").textContent = seconds;
+      document.getElementById("milliseconds").textContent = milliseconds;
 
-            // إضافة رسالة تنبيه عند الاقتراب من الموعد
-            if (days <= 1 && hours <= 6) {
-                document.getElementById("alertMessage").innerHTML = "الموعد يقترب!"; // يمكنك تخصيص الرسالة
-            } else {
-                document.getElementById("alertMessage").innerHTML = "";
-            }
-        }
+      // التأثيرات عند اقتراب الموعد
+      if (remainingTime < 10000) {
+        document.getElementById("countdown").style.color = '#ff3838';
+        document.getElementById("milliseconds").style.fontSize = '45px';
+      }
+    }
 
-        // تحديث العد التنازلي كل 500 مللي ثانية
-        setInterval(updateCountdown, 500);
-
-        // عرض العد التنازلي في البداية
-        updateCountdown();
-    </script>
+    // التحديث كل 100 ميللي ثانية (جزء من الثانية)
+    setInterval(updateCountdown, 100);
+  </script>
 </body>
 </html>
