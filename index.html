@@ -35,7 +35,7 @@
       right: 0;
       bottom: 0;
       z-index: -1;
-      filter: blur(8px);
+      opacity: 0.8; /* جعل الخلفية أقل كثافة لتوضيح النصوص بشكل أفضل */
     }
 
     .countdown-container {
@@ -144,30 +144,29 @@
   </style>
 </head>
 <body>
-  <div class="background">
-    <div class="countdown-container">
-      <h1 class="title">الوقت المتبقي على انتهاء الثانوية العامة</h1>
-      <div id="countdown">
-        <div class="time-unit">
-          <span id="days"></span>
-          <p>أيام</p>
-        </div>
-        <div class="time-unit">
-          <span id="hours"></span>
-          <p>ساعات</p>
-        </div>
-        <div class="time-unit">
-          <span id="minutes"></span>
-          <p>دقائق</p>
-        </div>
-        <div class="time-unit">
-          <span id="seconds"></span>
-          <p>ثواني</p>
-        </div>
+  <div class="background"></div>
+  <div class="countdown-container">
+    <h1 class="title">الوقت المتبقي على انتهاء الثانوية العامة</h1>
+    <div id="countdown">
+      <div class="time-unit">
+        <span id="days"></span>
+        <p>أيام</p>
       </div>
-      <div class="millisecond" id="milliseconds"></div>
-      <div class="countdown-text" id="countdown-text">الوقت اللي قاعدلنا في ثانوية عامة:</div>
+      <div class="time-unit">
+        <span id="hours"></span>
+        <p>ساعات</p>
+      </div>
+      <div class="time-unit">
+        <span id="minutes"></span>
+        <p>دقائق</p>
+      </div>
+      <div class="time-unit">
+        <span id="seconds"></span>
+        <p>ثواني</p>
+      </div>
     </div>
+    <div class="millisecond" id="milliseconds"></div>
+    <div class="countdown-text" id="countdown-text">الوقت اللي قاعدلنا في ثانوية عامة:</div>
   </div>
 
   <script>
