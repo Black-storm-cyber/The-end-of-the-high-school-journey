@@ -40,11 +40,11 @@
 
     .countdown-container {
       background: rgba(0, 0, 0, 0.7);
-      padding: 40px 20px;
+      padding: 50px 20px;
       border-radius: 20px;
       box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
       width: 90%;
-      max-width: 600px;
+      max-width: 800px;
     }
 
     h1.title {
@@ -75,6 +75,9 @@
       font-weight: bold;
       text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
       margin-top: 30px;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 15px;
     }
 
     .time-unit {
@@ -116,6 +119,14 @@
       animation: fadeIn 2s ease-in-out;
     }
 
+    .millisecond {
+      font-size: 35px;
+      font-weight: bold;
+      color: #f39c12;
+      margin-top: 20px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
     @media (max-width: 768px) {
       #countdown {
         flex-direction: column;
@@ -154,7 +165,8 @@
           <p>ثواني</p>
         </div>
       </div>
-      <div class="countdown-text" id="countdown-text">اللي قاعدلنا في ثانوية عامة بالظبط:</div>
+      <div class="millisecond" id="milliseconds"></div>
+      <div class="countdown-text" id="countdown-text">الوقت اللي قاعدلنا في ثانوية عامة:</div>
     </div>
   </div>
 
@@ -176,15 +188,23 @@
       const hours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+      const milliseconds = remainingTime % 1000;
 
       document.getElementById("days").textContent = days;
       document.getElementById("hours").textContent = hours;
       document.getElementById("minutes").textContent = minutes;
       document.getElementById("seconds").textContent = seconds;
+      document.getElementById("milliseconds").textContent = milliseconds;
+
+      // التأثيرات عند اقتراب الموعد
+      if (remainingTime < 10000) {
+        document.getElementById("countdown").style.color = '#ff3838';
+        document.getElementById("milliseconds").style.fontSize = '45px';
+      }
     }
 
-    // التحديث كل 1000 ميللي ثانية (كل ثانية)
-    setInterval(updateCountdown, 1000);
+    // التحديث كل 100 ميللي ثانية (جزء من الثانية)
+    setInterval(updateCountdown, 100);
   </script>
 </body>
 </html>
